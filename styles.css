@@ -1,0 +1,122 @@
+body {
+    background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    min-height: 100vh;
+    color: white;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.btn {
+    min-width: 200px;
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: scaleX(1.1);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+hr {
+    margin: 2rem 0;
+    opacity: 0.2;
+}
+
+h2 {
+    color: white;
+    font-weight: 600;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Custom button colors */
+.btn-success {
+    background-color: #2ecc71;
+    border-color: #2ecc71;
+}
+
+.btn-danger {
+    background-color: #e74c3c;
+    border-color: #e74c3c;
+}
+
+.btn-info {
+    background-color: #3498db;
+    border-color: #3498db;
+}
+
+.btn-warning {
+    background-color: #f1c40f;
+    border-color: #f1c40f;
+    color: #2c3e50;
+}
+
+.btn-secondary {
+    background-color: #95a5a6;
+    border-color: #95a5a6;
+} 
+
+img{
+    max-width: 400px;
+    margin-top: 4rem;
+    border-radius: 1rem;
+}
+
+.footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+a{
+    color: white;
+    text-decoration: none;
+    &:hover{
+        color: white;
+    }
+}
+
+.webpage{
+    color: lightblue;
+    text-decoration: underline;
+}
+
+.display-box {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    width: 500px;
+    min-height: 300px;
+    color: white;
+    font-family: monospace;
+    white-space: pre-wrap;
+    overflow-y: auto;
+    max-height: 400px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.info-display h3 {
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EV-husladdare</title>
+    <script src="script.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/b66649d011.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="container py-4">
+    <h2 class="text-center mb-4">EV-husladdare</h2>
+
+    <div class="button-group mb-4">
+        <button class="btn btn-primary me-2" onclick="getPricePerHour()">Hämta elpris</button>
+        <button class="btn btn-primary me-2" onclick="getHouseholdBaseload()">Hämta elförbrukning</button>
+        <button class="btn btn-primary" onclick="getInfo()">Visa info</button>
+    </div>
+    <hr>
+
+    <div class="button-group mb-4">
+        <button class="btn btn-success me-2" onclick="setCharge('on')">Starta laddningen (ingen gräns)</button>
+        <button class="btn btn-danger me-2" onclick="setCharge('off')">Stoppa laddningen</button>
+        <button class="btn btn-info me-2" onclick="getBatteryPercentage()">Visa batteri procent</button>
+        <button class="btn btn-warning me-2" onclick="autoCharge()">Ladda till 80%</button>
+        <button class="btn btn-secondary" onclick="dischargeBattery()">Sätt batteri till 20%</button>
+    </div>
+    <hr>
+
+    <div class="button-group">
+        <button class="btn btn-primary me-2" onclick="chargeLowestLoad()">Ladda vid lägsta elförbrukning</button>
+        <button class="btn btn-primary" onclick="chargeLowestPrice()">Ladda vid lägsta elpris</button>    
+    </div>
+
+    <div class="footer">
+        <img src="/images/cooldude.png">
+
+        <!--info will be desplayed in here-->
+        <div class="info-display mt-4">
+            <div id="displayArea" class="display-box">
+                
+            </div>
+        </div>
+
+        <div>
+            <a href="https://antondev.dev/" class="made-by">Made by Anton | <span class="webpage">antondev.dev</span></a>
+        </div>
+    </div>
+</body>
+</html>
