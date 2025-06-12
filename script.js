@@ -11,14 +11,14 @@ async function getPricePerHour() {
     let res = await fetch("http://127.0.0.1:5000/priceperhour");
     //packar upp från json
     let data = await res.json();
-    displayInfo("Elpris per timme: " + JSON.stringify(data));
+    displayInfo("Price per hour: " + JSON.stringify(data));
 }
 
 //hämtar elförbrukning
 async function getHouseholdBaseload() {
     let res = await fetch("http://127.0.0.1:5000/baseload");
     let data = await res.json();
-    displayInfo("Elförbrukning: " + JSON.stringify(data));
+    displayInfo("Consumption: " + JSON.stringify(data));
 }
 
 //skriver ut information om batteriet och hemmet
@@ -26,10 +26,10 @@ async function getInfo() {
     let res = await fetch("http://127.0.0.1:5000/info");
     let d = await res.json();
     
-    let infoMessage = `Tid: ${d.sim_time_hour}:${d.sim_time_min}\n` +
-                     `Elförbrukning: ${d.base_current_load}\n` +
-                     `Laddas: ${d.ev_battery_charge_start_stopp}\n` +
-                     `Batteriets kWh: ${d.battery_capacity_kWh}`;
+    let infoMessage = `Time: ${d.sim_time_hour}:${d.sim_time_min}\n` +
+                     `Consumption: ${d.base_current_load}\n` +
+                     `Charging: ${d.ev_battery_charge_start_stopp}\n` +
+                     `Battery kWh: ${d.battery_capacity_kWh}`;
     
     displayInfo(infoMessage);
 }
@@ -44,14 +44,14 @@ async function setCharge(state) {
         body: JSON.stringify({ charging: state })
     });
     let data = await res.json();
-    displayInfo("Laddningsstatus: " + JSON.stringify(data));
+    displayInfo("Charging status: " + JSON.stringify(data));
 }
 
 //hämtar batteri procent från endpointen /charge
 async function getBatteryPercentage() {
     let res = await fetch("http://127.0.0.1:5000/charge");
     let data = await res.json();
-    displayInfo("Batteri procent: " + data + "%");
+    displayInfo("Battery %: " + data + "%");
 }
 
 //laddar batteriet till 80%
@@ -72,7 +72,7 @@ async function autoCharge() {
         }
     }, 1000);
 
-    displayInfo("Laddar till 80%");
+    displayInfo("Charging to 80%");
 }
 
 //laddar ur batteriet till 20%
@@ -84,7 +84,7 @@ async function dischargeBattery() {
         body: JSON.stringify({ discharging: "on" })
     });
 
-    displayInfo("Laddade ur batteriet till 20%");
+    displayInfo("Discharged battery to 20%");
 }
 
 
@@ -100,7 +100,7 @@ async function chargeLowestLoad() {
             minHour = i;
         }
     }
-    displayInfo("Laddningen chemalagt vid lägsta elförbrukning: " + minHour);
+    displayInfo("Charging is set to start at the minimal consumption " + minHour);
     //anropar funktionen waitAndCharge med det minsta värdet
     waitAndCharge(minHour);
 }
@@ -119,7 +119,7 @@ async function chargeLowestPrice() {
             minHour = i;
         }
     }
-    displayInfo("Laddningen chemalagt vid lägsta elpris: " + minHour);
+    displayInfo("Charging is set to start at the minimal price " + minHour);
     waitAndCharge(minHour);
 
 }
